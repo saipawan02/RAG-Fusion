@@ -1,0 +1,8 @@
+openai
+fastapi
+llama-cpp-python
+chromadb
+langchain
+newspaper3k
+lxml_html_clean
+google-generativeai
