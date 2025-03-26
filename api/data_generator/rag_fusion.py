@@ -5,6 +5,11 @@ import json
 # from config.llm_config import get_completion
 from services.chroma_services import getQueryResults
 
+""" 
+Uncomment the below if you want to use local LLM model
+"""
+# from config.llm_config import get_completion
+
 from config.gemini_config import get_completion
 
 def generate_similar_queries(query):
@@ -90,9 +95,7 @@ return the blog in plain text format with proper heading and sub-heading.
 def getBlog(original_query):
 
     generated_queries = generate_similar_queries(original_query)
-    
     search_results = vector_search(generated_queries, 5)
-    
     reranked_results = reciprocal_rank_fusion(search_results)
     
     return generate_output(reranked_results, generated_queries)

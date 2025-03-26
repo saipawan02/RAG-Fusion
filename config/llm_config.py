@@ -11,14 +11,17 @@ llm = Llama(
       n_ctx=2048
 )
 
-def get_completion(original_query):
+def get_completion(query):
 
     response = llm.create_chat_completion(messages=[
             {
                 "role": "system",
-                "content": "You are a helpful assistant that outputs in JSON.",
+                "content": "You are assistant that leverages knowledge base provided, to generate informative and contextually relevant articles on demand.",
             },
-            {"role": "user", "content": original_query},
+            {
+                "role": "user", 
+                "content": query
+            },
         ],
         response_format={
             "type": "json_object",
